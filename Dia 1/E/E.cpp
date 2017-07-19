@@ -1,11 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <cmath>
+#include <cstdlib>
 
 using namespace std;
 
-long long main(){
+int main(){
 	long long A, B;
 	size_t cnt = 0;
 
@@ -30,11 +30,18 @@ long long main(){
 		if(str[ix] == 'B')
 			black.push_back(ix);
 	}
-	long long sum=0;
+	std::cout << "black" << '\n';
+	for (auto &pos : black) std::cout << "pos : "<<pos << '\n';
+	std::cout << "white" << '\n';
+	for (auto &pos : white) std::cout << "pos :" << pos<<'\n';
+
+	long long sum = 0;
 	long long C1 = A;
 	long long C2 = A - B;
-	for (long long ix=0 ; ix < cnt;ix++){
-		sum = sum + min( abs(black[ix]-white[ix]) * C2,C1);
+	for (long long ix = 0 ; ix < black.size() ;ix++){
+		std::cout <<abs(black[ix]-white[ix])*C2 << '\n';
+		std::cout << C1 << '\n';
+		sum = sum + min( abs(black[ix]-white[ix])*C2,C1);
 	}
 	cout<<sum<<"\n";
 
