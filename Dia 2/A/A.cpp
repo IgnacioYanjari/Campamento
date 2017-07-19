@@ -6,6 +6,11 @@
 using namespace std;
 
 int main(){
+  // Avoids iostream and stdio synchronization
+std::ios_base::sync_with_stdio(false);
+
+// Avoids flushing std::cout before reading from std::cin
+std::cin.tie(nullptr);
 	int N,M,K;
 	cin>>N>>M>>K;
 	char matrix[N+2][M+2];
@@ -13,21 +18,20 @@ int main(){
 		for (int j=0 ; j <= M+1 ; j++){
 			matrix[i][j]='#';
 		}
-	}	
+	}
 
 	for (int i =1 ; i <= N ; i++){
 		for (int j=1 ; j <= M ; j++){
 			cin>>matrix[i][j];
 		}
-	}	
+	}
 
 	// for (int i =0 ; i <= N+1 ; i++){
 	// 	for (int j=0 ; j <= M+1 ; j++){
-	// 		cout<<matrix[i][j]<<" "; 
+	// 		cout<<matrix[i][j]<<" ";
 	// 	}
 	// 	cout<<"\n";
 	// }
-
 
 	int marked[N+2][M+2];
 	for (int i =0 ; i <= N+1 ; i++){
@@ -36,24 +40,22 @@ int main(){
 		}
 	}
 
-	int grupo=0;
+
 	int solution[N+2][M+2];
 	for (int i =0 ; i <= N+1 ; i++){
 		for (int j=0 ; j <= M+1 ; j++){
 			solution[i][j]=0;
 		}
 	}
-
-	
+  int grupo=0;
+  std::vector<int> tableofsum;
 	for (int i=1 ; i <= N ;i++){
 		for (int j=1 ; j <= M ; j++){
-			std::map<int,int> tableofsum;
 			int suma=0;
 			if(matrix[i][j]=='.' && marked[i][j]==-1){
 				suma=0;
 				//std::vector< pair<int,int> > pos();
 				stack<pair<int,int>> a;
-				tableofsum.clear();
 				a.push(make_pair(i,j));
 				marked[i][j] = grupo;
 				//cout << a.top().first << " " << a.top().second << endl;
@@ -66,7 +68,6 @@ int main(){
 							//cout<<"x :"<<x+1<<" y :"<<y<<"\n";
 							a.push(make_pair(x+1,y));
 							marked[x+1][y]=grupo;
-
 						}
 						if(matrix[x+1][y] == '*'){
 							suma++;
@@ -94,7 +95,6 @@ int main(){
 					}
 					if (marked[x][y-1] == -1){
 						if(matrix[x][y-1] == '.'){
-							//cout<<"x :"<<x<<"y :"<<y-1<<"\n";
 							a.push(make_pair(x,y-1));
 							marked[x][y-1]=grupo;
 						}
@@ -103,20 +103,38 @@ int main(){
 						}
 					}
 				}
-				tableofsum[grupo] = suma;
-				grupo++;
-				for(auto &elem : tableofsum ){
-					cout<<"elem.first"<<elem.first<<" \n";
-					cout<<"elem.second"<<elem.second<<"\n";
-				}
 
+				tableofsum.push_back(suma);
+				grupo++;
 			}
 		}
 	}
-	
-	for(int i = 0 ; i<K ;i++){
+
+  for (size_t i = 1; i <= N ; i++) {
+    for (size_t j = 1; j <= M; j++) {
+        if( marked[i][j] < tableofsum.size() ){
+          solution[i][j] = tableofsum[marked[i][j]];
+        }
+    }
+  }
+
+  // for (size_t i = 1; i <= N ; i++) {
+  //   for (size_t j = 1; j <= M; j++) {
+  //     std::cout <<"\t"<< marked[i][j];
+  //   }
+  //   std::cout << '\n';
+  // }
+  // for (size_t i = 1; i <= N ; i++) {
+  //   for (size_t j = 1; j <= M; j++) {
+  //     std::cout <<"\t"<< solution[i][j];
+  //   }
+  //   std::cout << '\n';
+  // }
+
+  for(int i = 0 ; i<K ;i++){
 		int l,r;
 		cin>>l>>r;
 		cout<<solution[l][r]<<"\n";
-	}	
+	}
+
 }
