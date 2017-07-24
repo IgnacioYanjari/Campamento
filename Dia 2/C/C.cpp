@@ -44,12 +44,32 @@
 #include <regex>
 using namespace std;
 
+template <class T>
 class dwgraph{
+
   public:
+    using edge_t = std::pair<T,T>;
+    using list_edge_t = std::vector<edge_t>;
+
+  public:
+    dwgraph(T size) : list_adj(size,list_edge_t()){}
+    void connect( T from , T to , T weight = 1 ){
+      list_adj.at(from).push_back({to,weight});
+    }
+    list_edge_t get(T v){
+      return list_adj[v];
+    }
 
   private:
+    std::vector<list_edge_t> list_adj;
 };
 
+template <class T>
+T input_value(std::istream& input = std::cin) {
+    T value;
+    input >> value;
+    return value;
+}
 
 int main(){
 
@@ -57,48 +77,61 @@ int main(){
   std::cin.tie(nullptr);
   int N;
   cin>>N;
-  std::vector< std::vector<int> > matrix(N, std::vector<int>(N,0));
-  int dist[N][N];
+  size_t weight[N][N];
+  dwgraph<size_t> graph(N);
+  std::vector< std::vector<size_t> > dist(N,std::vector<size_t>(N));
   for (size_t i = 0; i < N; i++) {
     for (size_t j = 0; j < N; j++) {
-      cin>>dist[i][j];
+      cin>>weight[i][j];
     }
   }
+  stack<size_t> deletes;
 
-  for (size_t i = 0; i < N; i++) {
-    for (size_t j = 0; j < N; j++) {
-      matrix[i][j] = dist[i][j];
-    }
+  for(int i=0 ; i < N ; i++){
+    size_t aux;
+    cin>>aux;
+    deletes.push(aux);
   }
 
-  std::cout << "\t Matrix :" << '\n';
-  for(auto &subvector : matrix){
-    for( auto &elem : subvector){
-      std::cout<<"\t"<<elem<<" ";
-    }
-    std::cout << '\n';
-  }
+  auto first1 = deletes.top();
+  deletes.pop();
+  std::cout << "first1 :"<<first1 << '\n';
 
-  std::vector<int> deletes(N);
-  for(auto &elem : deletes)
-    cin>>elem;
-  std::cout << "\t Deletes : " << '\n';
-  for(auto &elem : deletes)
-    std::cout<<"\t"<< elem<<" ";
-  std::cout<< '\n';
-  for (size_t k = 0; k < N; k++) {
-    for (size_t i = 0; i < N; i++) {
-      for (size_t j = 0; j < N ; j++) {
-        dist[i][j] = min(dist[i][j],dist[i][k]+dist[k][j]);
+  for(int k = 1 ; k < N ; k++){
+    //meto k al grafo
+    if(k==1){
+      auto first2 = deletes.top();
+      deletes.pop();
+      for (size_t l = 0; l < 2; l++) {
+        graph.connect(first1,first2,weight[first1][first2]);
+        graph.connect(first2,first1,weight[first2][first1]);
+      }
+      for (size_t i = 0 ; i<2 ;i++){
+        for(size_t j = 0 ; j<N ;j++){
+          dist[i].push_back(0);
+        }
+      }
+
+      for(int i = 0 ; i < N ; i++){
+        for (const auto &elem : graph.get(i)){
+          dist[i][j] = min( dist[i][j] , dist[i][elem.first]+dist[elem.first][j] );
+        }
       }
     }
-  }
-  std::cout << "Dist :" << '\n';
-  for (size_t i = 0; i < N; i++) {
-    for (size_t j = 0; j < N; j++) {
-      std::cout << dist[i][j]<<" ";
+
+    for(int i = 0 ; i < N ; i++){
+      for(int j = 0 ; j < N ;j++){
+
+      }
     }
-    std::cout<< '\n';
+
+
+    for(int i = 0 ; i < N ; i++){
+      for (const auto &elem : graph.get(i)){
+        dist[i][j] = min( dist[i][j] , dist[i][elem.first]+dist[elem.first][j] );
+      }
+    }
+
   }
 
 }

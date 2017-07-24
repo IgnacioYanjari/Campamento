@@ -25,7 +25,7 @@ std::cin.tie(nullptr);
 		for (int j=1 ; j <= M ; j++){
 			cin>>matrix[i][j];
 		}
-    
+
 	}
 
 	// for (int i =0 ; i <= N+1 ; i++){
@@ -63,7 +63,7 @@ std::cin.tie(nullptr);
 				//cout << a.top().first << " " << a.top().second << endl;
 				while(!a.empty()){
 					auto x = a.top().first;
-					auto y = a.top().second;
+					auto y = a.top().second;	
 					a.pop();
 					if (marked[x+1][y] == -1){
 						if(matrix[x+1][y] == '.'){

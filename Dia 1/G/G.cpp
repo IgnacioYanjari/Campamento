@@ -95,6 +95,8 @@ vector<ull> RH::x[2];
 //     01234567890123
 
 int main(){
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr);
   string str;
   int n;
   std::cin >> str >> n;
