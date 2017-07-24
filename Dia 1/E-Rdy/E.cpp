@@ -39,8 +39,6 @@ int main(){
 	long long C1 = A;
 	long long C2 = A - B;
 	for (long long ix = 0 ; ix < black.size() ;ix++){
-		std::cout <<abs(black[ix]-white[ix])*C2 << '\n';
-		std::cout << C1 << '\n';
 		sum = sum + min( abs(black[ix]-white[ix])*C2,C1);
 	}
 	cout<<sum<<"\n";
