@@ -62,15 +62,9 @@ T sum_rectangules(matrix<T> &sumMatrix, std::pair<T, T> i, std::pair<T, T> j) {
   T num3 = sumMatrix[i.first - 1][i.second - 1];
 
   sum = sumMatrix[j.first][j.second] - (num1 + num2) + num3;
-  if (i.first == 2 && i.second == 1 && j.first == 4 && j.second == 2) {
-    cout << "i: (" << i.first << ", " << i.second << ")\n";
-    cout << "j: (" << j.first << ", " << j.second << ")\n";
-    cout << "sum: " << sum << '\n';
-    cout << '\n';
-  }
   return sum;
 }
-//(2,1) -- (4, 2)
+
 int main() {
   std::ios_base::sync_with_stdio(false);
   std::cin.tie(nullptr);
@@ -85,12 +79,6 @@ int main() {
       mat[i][j] = input<int>();
     }
   }
-  for (int i = 0; i < n; ++i) {
-    for (int j = 0; j < n; ++j) {
-      cout << mat[i][j] << ' ';
-    }
-    cout << '\n';
-  }
 
   for (int ix = 1; ix <= n; ix++) {
     for (int iy = 1; iy <= n; iy++) {
@@ -99,26 +87,15 @@ int main() {
     }
   }
 
-  cout << '\n';
-  cout << '\n';
-  for (int ix = 1; ix <= n; ix++) {
-    for (int iy = 1; iy <= n; iy++) {
-      cout << sumMatrix[ix][iy] << ' ';
-    }
-    cout << '\n';
-  }
+  int aux = -99999999;
 
-  int aux = -99999;
-  for (int i = 0; i < n; ++i) {
-    for (int j = 0; j < n; ++j) {
-      for (int k = 0; k < n; ++k) {
-        cout << "i : " << i << " j : " << j << " k : " << k << "\n";
-        aux = std::max(
-            aux, sum_rectangules(sumMatrix, {i + 1, k + 1}, {k + 1, j + 1}));
-      }
-    }
-  }
+  for (int i = 1; i <= n; ++i)
+    for (int j = 1; j <= n; ++j)
+      for (int k = i; k <= n; ++k)
+        for (int l = j; l <= n; ++l)
+          aux = std::max(aux, sum_rectangules(sumMatrix, {i, j}, {k, l}));
 
   cout << aux << '\n';
+
   return 0;
 }
