@@ -13,13 +13,60 @@
 10. [Pasti Pas! - LiveArchive](https://github.com/IgnacioYanjari/Campamento/tree/master/Dia%201/J)
 
 ### Día 2
-Soon
+1. [Igor In the Museum - Codeforces]()
+2. [Dijkstra? - Codeforces]()
+3. [Greg and Graph - Codeforces]()
+4. [Bank Robbery - UVa]()
+5. [Wormholes - UVa]()
+6. [Almost Shortest Path - LiveArchive]()
+7. [Zing Zhu’s Oyster Farm - LiveArchive]()
+8. [106 Miles To Chicago - URI]()
+9. [Generating Alien DNA - URI]()
 
 ### Día 3
-Soon
+1. [Aibohphobia - SPOJ]()
+2. [Ada and Game - SPOJ]()
+3. [Wedding shopping - UVa]()
+4. [Dividing coins - UVa]()
+5. [Exposing corruption - UVa]()
+6. [Chocolate 2 - Timus]()
+7. [Chocolate - SPOJ]()
+8. [Binary Search Tree - LiveArchive]()
+9. [Prime Digital Roots - LiveArchive]()
+10. [Little Red Riding Hood - UVa]()
+11. [Dreamoon and WiFi - Codeforces]()
 
 ### Día 4
-Soon
+1. [Cthulhu - Codeforces]()
+2. [Dark Roads - UVa]()
+3. [Rare Order - UVa]()
+4. [Beverages - UVa]()
+5. [Many Paths, One Destination - UVa]()
+6. [Critical Links - UVa]()
+7. [The Ant - SPOJ]()
+8. [Test - UVa]()
+9. [Checkposts - Codeforces]()
+10. [The Child and Zoo - Codeforces]()
 
 ### Día 5
-Soon
+1. [Barcode - Codeforces]()
+2. [Optimal Array Multiplication Sequence - UVa]()
+3. [Hard problem - Codeforces]()
+4. [No Change - SPOJ]()
+5. [What Has Dirichlet Got to Do with That? - Codeforces]()
+6. [Ciel and Gondolas - Codeforces]()
+7. [Arranging Heaps - URI]()
+8. [Optimal Binary Search Tree - UVa]()
+9. [Breaking Strings - ZOJ]()
+
+### Día 6
+1. [Fast Maximum Flow - SPOJ]()
+2. [Hooligan - UVa]()
+3. [Kill the Werewolf - URI]()
+4. [Buy one, get the rest free - UVa]()
+5. [Attacking Rooks - URI]()
+6. [Gas Wars - SPOJ]()
+7. [Intergalactic Map - SPOJ]()
+8. [Sentry Robots - UVa]()
+9. [Mission Improbable - LiveArchive]()
+10. [Coconuts - SPOJ]()
