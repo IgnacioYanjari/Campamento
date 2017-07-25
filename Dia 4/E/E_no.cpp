@@ -74,18 +74,18 @@ int dp_bottom(std::vector< std::vector<int> > graph, std::vector<int> &memoized,
 }
 
 int dp_top_down(std::vector< std::vector<int> > graph, std::vector<int> &memoized, int m, std::map<int, bool> map){
-  if(memoized)
-  memoized.at(m) = 1;
-  for(int j = m-1 ; j >=0 ;j--){
-    int suma=0;
-    for(int i = m; i >= 0 ;i--){
-      if( graph.at(i).at(j) == 1 ){
-        suma+=memoized.at(i);
-      }
-    }
-    memoized.at(j) = suma;
-  }
-  return memoized.at(0);
+  // if(memoized)
+  // memoized.at(m) = 1;
+  // for(int j = m-1 ; j >=0 ;j--){
+  //   int suma=0;
+  //   for(int i = m; i >= 0 ;i--){
+  //     if( graph.at(i).at(j) == 1 ){
+  //       suma+=memoized.at(i);
+  //     }
+  //   }
+  //   memoized.at(j) = suma;
+  // }
+  // return memoized.at(0);
 }
 
 int main() {
