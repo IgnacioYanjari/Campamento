@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <cstdlib>
+#include <cmath>
 
 using namespace std;
 
@@ -30,12 +30,7 @@ int main(){
 		if(str[ix] == 'B')
 			black.push_back(ix);
 	}
-	std::cout << "black" << '\n';
-	for (auto &pos : black) std::cout << "pos : "<<pos << '\n';
-	std::cout << "white" << '\n';
-	for (auto &pos : white) std::cout << "pos :" << pos<<'\n';
-
-	long long sum = 0;
+	unsigned long long sum=0;
 	long long C1 = A;
 	long long C2 = A - B;
 	for (long long ix = 0 ; ix < black.size() ;ix++){
